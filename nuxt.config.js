@@ -51,7 +51,7 @@ export default {
     extend (config, ctx) {
     }
   },
-  server: {
-    port: process.env.PORT
+  env: {
+    apiUrl: "https://dalchal-api.herokuapp.com/api"
   }
 }

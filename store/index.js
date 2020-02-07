@@ -12,7 +12,7 @@ export const mutations = {
 };
 
 export const actions = {
-  nuxtServerInit(vuexContext, context) {
+  nuxtServerInit(vuexContext) {
     return axios
       .get(process.env.apiUrl + "/categories")
       .then(response => {

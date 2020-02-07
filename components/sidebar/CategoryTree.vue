@@ -17,7 +17,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .container {
     display: flex;
     flex-direction: column;

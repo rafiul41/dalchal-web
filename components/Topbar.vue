@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div id="sidebar-toggle" class="col-1"></div>
-    <div id="dalchal-logo" class="col-2"></div>
+    <div id="dalchal-logo" class="col-2">DALCHAL LOGO</div>
     <div id="search-box" class="col-7">
       <input id="search-input">
     </div>

@@ -6,13 +6,11 @@
 </template>
 
 <script>
-  import axios from 'axios';
-
   export default {
-    data() {
-      return {
-        allCategories: null
-      };
+    computed: {
+      allCategories() {
+        return this.$store.getters.loadedCategories;
+      }
     },
     methods: {
       populateCategories(category) {
@@ -38,18 +36,10 @@
         child.setAttribute('id', category.name);
         document.getElementById(parentElementName).appendChild(child);
         this.populateCategories(category);
+      },
+      created() {
+        this.appendCategories();
       }
-    },
-    created() {
-      axios
-        .get(process.env.apiUrl + "/categories")
-        .then(response => {
-          this.allCategories = response.data.data;
-          this.appendCategories();
-        })
-        .catch(err => {
-          console.log(err);
-        })
     }
   }
 </script>

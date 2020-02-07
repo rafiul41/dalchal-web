@@ -6,7 +6,10 @@
 </template>
 
 <script>
+  import Category from "./Category";
+
   export default {
+    components: {Category},
     computed: {
       allCategories() {
         return this.$store.getters.loadedCategories;

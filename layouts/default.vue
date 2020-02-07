@@ -1,8 +1,8 @@
 <template>
   <div>
-    <topbar/>
+    <Topbar/>
     <div id="app">
-      <sidebar id="sidebar"/>
+      <Sidebar id="sidebar"/>
       <nuxt id="app-body"/>
     </div>
   </div>
@@ -13,10 +13,7 @@
   import Topbar from "../components/Topbar";
 
   export default {
-    components: {
-      sidebar: Sidebar,
-      topbar: Topbar
-    }
+    components: {Sidebar, Topbar}
   }
 </script>
 

@@ -24,7 +24,8 @@
         }
       },
       appendCategories() {
-        this.allCategories.forEach(category => {
+        const loadedCategories = this.allCategories;
+        loadedCategories.forEach(category => {
           this.createLiNodeAndPopulate(category, 'all-categories', 'inherit');
         });
       },
@@ -36,10 +37,10 @@
         child.setAttribute('id', category.name);
         document.getElementById(parentElementName).appendChild(child);
         this.populateCategories(category);
-      },
-      created() {
-        this.appendCategories();
       }
+    },
+    beforeMount() {
+      this.appendCategories();
     }
   }
 </script>

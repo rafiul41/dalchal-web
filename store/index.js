@@ -1,10 +1,9 @@
 import axios from 'axios';
 
-export const state = () => {
-  return {
-    categories: []
-  };
-};
+export const state = () => ({
+  categories: []
+});
+
 
 export const mutations = {
   setCategories(state, categories) {
@@ -18,7 +17,7 @@ export const actions = {
       .get(process.env.apiUrl + "/categories")
       .then(response => {
         vuexContext.commit('setCategories', response.data.data);
-        return Promise.resolve('');
+        return Promise.resolve();
       })
       .catch(err => {
         return Promise.reject(err);

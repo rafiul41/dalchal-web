@@ -53,5 +53,10 @@ export default {
   },
   env: {
     apiUrl: "https://dalchal-api.herokuapp.com/api"
+  },
+  vue: {
+    config: {
+      devTools: true
+    }
   }
 }

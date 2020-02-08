@@ -14,8 +14,8 @@
     methods: {
       navigateToCategoryPage(event) {
         event.stopPropagation();
-        this.$router.push(this.category.url);
         this.$store.commit('setSelectedCategory', this.category);
+        this.$router.push(this.category.url);
       }
     }
   }

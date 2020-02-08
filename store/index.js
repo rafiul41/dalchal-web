@@ -1,13 +1,17 @@
 import axios from 'axios';
 
 export const state = () => ({
-  categories: []
+  categories: [],
+  selectedCategory: {}
 });
 
 
 export const mutations = {
   setCategories(state, categories) {
     state.categories = categories;
+  },
+  setSelectedCategory(state, category) {
+    state.selectedCategory = category;
   }
 };
 
@@ -28,5 +32,8 @@ export const actions = {
 export const getters = {
   loadedCategories(state) {
     return state.categories;
+  },
+  selectedCategory(state) {
+    return state.selectedCategory;
   }
 };

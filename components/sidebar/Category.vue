@@ -1,7 +1,7 @@
 <template>
-  <div @click="navigateToCategoryPage($event)">
+  <div :id="category.url" @click="navigateToCategoryPage($event)">
     {{category.name}}
-    <div v-if="category.subCategories.length > 0" :id="category.name + '-childs'" :style="{display: 'none'}">
+    <div v-if="category.subCategories.length > 0" :id="category.url + '-childs'" :style="{display: 'none'}">
       <Category v-for="subCategory in category.subCategories" :key="subCategory.name" :category="subCategory"/>
     </div>
   </div>

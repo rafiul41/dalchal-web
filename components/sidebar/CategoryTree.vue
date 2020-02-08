@@ -16,6 +16,21 @@
     },
     methods: {
       foldAll() {
+        this.allCategories.forEach(category => {
+          this.foldCategory(category.url);
+        });
+      },
+      foldCategory(categoryId) {
+        const element = document.getElementById(categoryId);
+        if (element.children.length === 0) {
+          return 0;
+        }
+        element.children[0].style.display = 'none';
+        const children = element.children[0].children;
+        for (let i = 0; i < children.length; i++) {
+          const child = children[i];
+          this.foldCategory(child.id);
+        }
       },
       unfoldCategory(categoryId) {
         const element = document.getElementById(categoryId);
@@ -36,6 +51,7 @@
         this.foldAll();
       });
       this.$eventBus.$on('unfoldCategory', (categoryId) => {
+        this.foldAll();
         this.unfoldCategory(categoryId);
       })
     }

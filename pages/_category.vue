@@ -5,13 +5,6 @@
 <script>
   export default {
     methods: {
-      printFunc() {
-        console.log('ajaira');
-        this.heyGirl();
-      },
-      heyGirl() {
-        console.log('hey man!')
-      }
     },
     created: function () {
       const category = this.$route.params.category;

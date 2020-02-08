@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" id="category-tree">
     <Category v-for="category in allCategories" :key="category.name" :category="category"/>
   </div>
 </template>

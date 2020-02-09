@@ -1,6 +1,7 @@
 <template>
   <div class="product">
     <img :src="productInfo.background" alt="">
+    <div>{{productInfo.name}}</div>
   </div>
 </template>
 

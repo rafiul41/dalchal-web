@@ -3,9 +3,11 @@
     <div v-if="!selectedCategory.url">SORRY THERE IS NO SUCH CATEGORY LIKE THIS</div>
     <div v-else class="container">
       <img :src="selectedCategory.background" alt="">
+      <div>{{selectedCategory.name}}</div>
       <div v-if="!isProductToBeShown" class="subcategory">
         <div v-for="subCategory in selectedCategory.subCategories" :key="subCategory.name">
           <img @click="navigateToCategory(subCategory)" :src="subCategory.background" alt="">
+          <div>{{subCategory.name}}</div>
         </div>
       </div>
       <div v-else>

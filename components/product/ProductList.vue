@@ -11,23 +11,28 @@
   export default {
     components: {Product},
     computed: {
+      selectedCategory() {
+        return this.$store.getters.selectedCategory
+      },
       loadedProducts() {
-        return this.$store.getters.loadedProducts;
+        return this.$store.getters.loadedProducts
       }
     },
-    fetch(context) {
-      console.log('dhukse !!!!');
-      return axios
-        .get(process.env.apiUrl + "/products", {
-          query: {categoryId: this.$store.getters.selectedCategory.id}
-        })
-        .then(response => {
-          context.store.commit('setProducts', response.data.data);
-          return Promise.resolve();
-        })
-        .catch(err => {
-          return Promise.reject(err);
-        })
+    methods: {
+      fetchProducts() {
+        return axios
+          .get(process.env.apiUrl + "/product?categoryId=" + this.selectedCategory._id)
+          .then(response => {
+            this.$store.commit('setProducts', response.data.data);
+            return Promise.resolve();
+          })
+          .catch(err => {
+            return Promise.reject(err);
+          })
+      }
+    },
+    created(vuexContext) {
+      this.fetchProducts();
     }
   }
 </script>

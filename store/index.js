@@ -3,7 +3,13 @@ import axios from 'axios';
 export const state = () => ({
   categories: [],
   loadedProducts: [],
-  selectedCategory: {}
+  selectedCategory: {},
+  cart: {
+    numberOfItems: 0,
+    totalCost: 0,
+    discount: 0,
+    products: []
+  }
 });
 
 

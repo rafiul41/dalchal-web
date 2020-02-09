@@ -12,18 +12,17 @@
 <style lang="scss" scoped>
   .row {
     height: 55px;
-  }
-
-  #sidebar-toggle {
-    background: orange;
-  }
-  #dalchal-logo {
-    background: rebeccapurple;
-  }
-  #search-box {
-    background: aquamarine;
-  }
-  #others {
-    background: aqua;
+    #sidebar-toggle {
+      background: orange;
+    }
+    #dalchal-logo {
+      background: rebeccapurple;
+    }
+    #search-box {
+      background: aquamarine;
+    }
+    #others {
+      background: aqua;
+    }
   }
 </style>

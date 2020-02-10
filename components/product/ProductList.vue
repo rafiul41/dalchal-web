@@ -7,16 +7,12 @@
 <script>
   import axios from 'axios';
   import Product from "./Product";
+  import {mapGetters} from 'vuex';
 
   export default {
     components: {Product},
     computed: {
-      selectedCategory() {
-        return this.$store.getters.selectedCategory
-      },
-      loadedProducts() {
-        return this.$store.getters.loadedProducts
-      }
+      ...mapGetters(['selectedCategory', 'loadedProducts'])
     },
     methods: {
       fetchProducts() {
@@ -31,7 +27,7 @@
           })
       }
     },
-    created(vuexContext) {
+    created() {
       this.fetchProducts();
     }
   }

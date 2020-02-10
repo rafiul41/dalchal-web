@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .row {
     height: 55px;
     #sidebar-toggle {

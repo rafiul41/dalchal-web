@@ -1,15 +1,14 @@
 import axios from 'axios';
+import Vue from 'vue';
 
 export const state = () => ({
   categories: [],
   loadedProducts: [],
   selectedCategory: {},
-  cart: {
-    numberOfItems: 0,
-    totalCost: 0,
-    discount: 0,
-    products: []
-  }
+  // Cart variables
+  totalCost: 0,
+  discount: 0,
+  cartProducts: {}
 });
 
 
@@ -22,6 +21,18 @@ export const mutations = {
   },
   setProducts(state, products) {
     state.loadedProducts = products;
+  },
+  // Cart mutations
+  addProductToCart(state, product) {
+    if (!state.cartProducts[product._id]) {
+      product.inBag = 1;
+      Vue.set(state.cartProducts, product._id, product);
+    } else {
+      const updatedProduct = Object.assign({}, state.cartProducts[product._id]);
+      updatedProduct.inBag = state.cartProducts[product._id].inBag + 1;
+      Vue.set(state.cartProducts, product._id, updatedProduct);
+    }
+    Vue.set(state, 'totalCost', state.totalCost + product.cost);
   }
 };
 
@@ -48,5 +59,9 @@ export const getters = {
   },
   loadedProducts(state) {
     return state.loadedProducts;
+  },
+  // Cart getters
+  cartProductList(state) {
+    return state.cartProducts;
   }
 };

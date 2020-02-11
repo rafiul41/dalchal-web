@@ -2,19 +2,25 @@
   <div class="product">
     <img :src="productInfo.background" alt="">
     <div>{{productInfo.name}}</div>
-    <button @click="addProductToCart(productInfo)">Add to bag</button>
+    <button v-if="!cartProductList[productInfo._id]" @click="addProductToCart(productInfo)">Add to bag</button>
+    <div v-else>
+      <span><button @click="decreaseAmount(productInfo)">-</button></span>
+      {{cartProductList[productInfo._id].inBag}} in bag
+      <span><button @click="addProductToCart(productInfo)">+</button></span>
+    </div>
   </div>
 </template>
 
 <script>
-  import {mapMutations} from 'vuex';
+  import {mapMutations, mapGetters} from 'vuex';
 
   export default {
     props: ['productInfo'],
     computed: {
+      ...mapGetters(['cartProductList'])
     },
     methods: {
-      ...mapMutations(['addProductToCart'])
+      ...mapMutations(['addProductToCart', 'decreaseAmount'])
     }
   }
 </script>

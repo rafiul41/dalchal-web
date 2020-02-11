@@ -33,6 +33,16 @@ export const mutations = {
       Vue.set(state.cartProducts, product._id, updatedProduct);
     }
     Vue.set(state, 'totalCost', state.totalCost + product.cost);
+  },
+  decreaseAmount(state, product) {
+    if (state.cartProducts[product._id].inBag === 1) {
+      Vue.delete(state.cartProducts, product._id);
+    } else {
+      const updatedProduct = Object.assign({}, state.cartProducts[product._id]);
+      updatedProduct.inBag = state.cartProducts[product._id].inBag - 1;
+      Vue.set(state.cartProducts, product._id, updatedProduct);
+    }
+    Vue.set(state, 'totalCost', state.totalCost - product.cost);
   }
 };
 
@@ -63,5 +73,8 @@ export const getters = {
   // Cart getters
   cartProductList(state) {
     return state.cartProducts;
+  },
+  totalCost(state) {
+    return state.totalCost;
   }
 };

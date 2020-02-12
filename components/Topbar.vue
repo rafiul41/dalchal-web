@@ -1,7 +1,9 @@
 <template>
   <div class="row">
     <div id="sidebar-toggle" class="col-1"></div>
-    <div id="dalchal-logo" class="col-2">DALCHAL LOGO</div>
+    <div id="dalchal-logo" class="col-2">
+      <nuxt-link to="/">DALCHAL LOGO</nuxt-link>
+    </div>
     <div id="search-box" class="col-7">
       <input v-model="searchString" v-on:keyup="navigateToSearch" id="search-input">
     </div>

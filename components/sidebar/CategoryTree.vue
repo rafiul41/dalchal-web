@@ -46,10 +46,7 @@
         this.unfoldCategory(element.parentElement.parentElement.id);
       }
     },
-    beforeMount: function () {
-      this.$eventBus.$on('foldAll', () => {
-        this.foldAll();
-      });
+    mounted: function () {
       this.$eventBus.$on('unfoldCategory', (categoryId) => {
         this.foldAll();
         this.unfoldCategory(categoryId);

@@ -1,6 +1,8 @@
 <template>
   <div>
-    <Product v-for="product in searchedProducts" :key="product.code" :productInfo="product"/>
+    <div class="searched-products">
+      <Product v-for="product in searchedProducts" :key="product.code" :productInfo="product"/>
+    </div>
   </div>
 </template>
 
@@ -35,5 +37,11 @@
 </script>
 
 <style lang="scss">
-
+  .searched-products {
+    display: flex;
+    margin: 10px;
+    align-items: flex-start;
+    text-align: center;
+    flex-wrap: wrap;
+  }
 </style>

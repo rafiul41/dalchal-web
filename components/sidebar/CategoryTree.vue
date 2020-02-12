@@ -64,5 +64,6 @@
     flex-direction: row;
     justify-content: left;
     align-items: center;
+    border-right: 1px solid #b0b0b6;
   }
 </style>

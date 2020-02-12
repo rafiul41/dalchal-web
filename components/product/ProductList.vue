@@ -1,6 +1,6 @@
 <template>
   <div class="product-list">
-    <Product class="product" v-for="product in loadedProducts" :key="product.code" :productInfo="product"/>
+    <Product v-for="product in loadedProducts" :key="product.code" :productInfo="product"/>
   </div>
 </template>
 
@@ -40,11 +40,5 @@
     align-items: flex-start;
     text-align: center;
     flex-wrap: wrap;
-
-    img {
-      margin: 10px;
-      height: 135px;
-      width: 220px;
-    }
   }
 </style>

@@ -1,9 +1,7 @@
 <template>
   <div class="top-bar">
     <div id="sidebar-toggle"></div>
-    <div id="dalchal-logo">
-      <nuxt-link to="/">DALCHAL LOGO</nuxt-link>
-    </div>
+    <nuxt-link id="dalchal-logo" to="/"></nuxt-link>
     <div id="search-box">
       <input v-model="searchString" v-on:keyup="navigateToSearch" id="search-input">
     </div>
@@ -43,20 +41,23 @@
     position: fixed;
     display: flex;
     margin-top: -55px;
+    background: #FDD670;
+    border-bottom: 1px solid #8d8d8d;
+
     #sidebar-toggle {
-      background: orange;
       width: 5%;
     }
+
     #dalchal-logo {
-      background: rebeccapurple;
       width: 10%;
+      background: url('../static/chaldal-logo.png');
     }
+
     #search-box {
-      background: aquamarine;
       width: 60%;
     }
+
     #others {
-      background: aqua;
       width: 25%;
     }
   }

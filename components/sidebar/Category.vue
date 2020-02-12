@@ -24,8 +24,7 @@
 
 <style lang="scss">
   .category-btn {
-    margin: 15px;
-
+    margin-left: 15px;
     .category-btn-name {
       &:hover {
         cursor: pointer;

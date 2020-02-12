@@ -20,7 +20,15 @@
       navigateToSearch() {
         const searchUrl = '/search/' + this.searchString;
         this.$router.push(searchUrl);
+      },
+      clearSearchString() {
+        this.searchString = '';
       }
+    },
+    created() {
+      this.$eventBus.$on('clearSearchString', () => {
+        this.clearSearchString();
+      })
     }
   }
 </script>

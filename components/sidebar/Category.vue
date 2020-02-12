@@ -15,7 +15,8 @@
       navigateToCategoryPage(event) {
         event.stopPropagation();
         this.$store.commit('setSelectedCategory', this.category);
-        this.$router.push(this.category.url);
+        this.$eventBus.$emit('clearSearchString');
+        this.$router.push('/category/' + this.category.url);
       }
     }
   }

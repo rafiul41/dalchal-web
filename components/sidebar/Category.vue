@@ -1,6 +1,6 @@
 <template>
-  <div :id="category.url" @click="navigateToCategoryPage($event)">
-    {{category.name}}
+  <div class="category-btn" :id="category.url" @click="navigateToCategoryPage($event)">
+    <div class="category-btn-name">{{category.name}}</div>
     <div v-if="category.subCategories.length > 0" :id="category.url + '-childs'" :style="{display: 'none'}">
       <Category v-for="subCategory in category.subCategories" :key="subCategory.name" :category="subCategory"/>
     </div>
@@ -23,4 +23,14 @@
 </script>
 
 <style lang="scss">
+  .category-btn {
+    margin: 15px;
+
+    .category-btn-name {
+      &:hover {
+        cursor: pointer;
+        background-image: linear-gradient(to right, white, grey);
+      }
+    }
+  }
 </style>

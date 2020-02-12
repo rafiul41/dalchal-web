@@ -22,11 +22,11 @@
       },
       foldCategory(categoryId) {
         const element = document.getElementById(categoryId);
-        if (element.children.length === 0) {
+        if (element.children.length === 1) {
           return 0;
         }
-        element.children[0].style.display = 'none';
-        const children = element.children[0].children;
+        element.children[1].style.display = 'none';
+        const children = element.children[1].children;
         for (let i = 0; i < children.length; i++) {
           const child = children[i];
           this.foldCategory(child.id);
@@ -35,8 +35,8 @@
       unfoldCategory(categoryId) {
         const element = document.getElementById(categoryId);
 
-        if (element.children.length > 0) {
-          element.children[0].style.display = 'inherit';
+        if (element.children.length > 1) {
+          element.children[1].style.display = 'inherit';
         }
 
         if (element.parentElement.id === 'sidebar') {
@@ -58,6 +58,7 @@
 <style lang="scss">
   #sidebar {
     position: fixed;
+    height: 100%;
     width: 15%;
     margin: 0;
     flex-direction: row;

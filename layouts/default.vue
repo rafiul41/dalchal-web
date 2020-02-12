@@ -30,12 +30,11 @@
   }
 
   #app {
-    display: flex;
-    flex-direction: row;
     position: relative;
     margin-top: 55px;
 
     #main-body {
+      margin-left: 15%;
       width: 70%;
     }
   }

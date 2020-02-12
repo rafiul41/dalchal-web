@@ -80,6 +80,7 @@
 
 <style lang="scss">
   .main-category {
+    margin-top: 55px;
     .main-category-contents {
       img {
         height: 200px;

@@ -22,6 +22,9 @@
   .cart {
     height: 95%;
     width: 15%;
+    position: fixed;
+    right: 0;
+    top: 55px;
 
     .heading {
       text-align: center;

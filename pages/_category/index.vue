@@ -18,7 +18,7 @@
 </template>
 
 <script>
-  import ProductList from "../components/product/ProductList";
+  import ProductList from "../../components/product/ProductList";
 
   export default {
     components: {ProductList},
@@ -38,7 +38,7 @@
     methods: {
       navigateToCategory(category) {
         this.$store.commit('setSelectedCategory', category);
-        this.$router.push(this.selectedCategory.url);
+        this.$router.push(this.localePath('search'));
       },
       searchForCategory(categoryId) {
         this.allCategories.forEach(category => {

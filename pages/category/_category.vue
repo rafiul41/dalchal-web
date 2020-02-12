@@ -38,7 +38,7 @@
     methods: {
       navigateToCategory(category) {
         this.$store.commit('setSelectedCategory', category);
-        this.$router.push(this.selectedCategory.url);
+        this.$router.push('/category/' + this.selectedCategory.url);
       },
       searchForCategory(categoryId) {
         this.allCategories.forEach(category => {

@@ -1,9 +1,11 @@
 <template>
   <div>
     <div v-if="!selectedCategory.url">SORRY THERE IS NO SUCH CATEGORY LIKE THIS</div>
-    <div v-else class="container">
-      <img :src="selectedCategory.background" alt="">
-      <div>{{selectedCategory.name}}</div>
+    <div v-else class="main-category">
+      <div class="main-category-contents">
+        <img :src="selectedCategory.background" alt="">
+        <div>{{selectedCategory.name}}</div>
+      </div>
       <div v-if="!isProductToBeShown" class="subcategory">
         <div v-for="subCategory in selectedCategory.subCategories" :key="subCategory.name">
           <img @click="navigateToCategory(subCategory)" :src="subCategory.background" alt="">
@@ -65,7 +67,7 @@
         this.searchForCategory(category);
       }
 
-      if(this.selectedCategory.subCategories.length === 0) {
+      if (this.selectedCategory.subCategories.length === 0) {
         this.isProductToBeShown = true;
       }
 
@@ -77,16 +79,18 @@
 </script>
 
 <style lang="scss">
-  .container {
-    img {
-      height: 150px;
-      width: 250px;
+  .main-category {
+    .main-category-contents {
+      img {
+        height: 150px;
+        width: 250px;
+      }
+      text-align: center;
     }
-
     .subcategory {
-      flex-direction: row;
-      justify-content: space-evenly;
-
+      display: flex;
+      margin: 10px;
+      align-items: flex-start;
       img {
         height: 100px;
         width: 180px;

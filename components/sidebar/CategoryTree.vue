@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div id="sidebar" class="category-tree">
     <Category v-for="category in allCategories" :key="category.name" :category="category"/>
   </div>
 </template>
@@ -56,9 +56,10 @@
 </script>
 
 <style lang="scss">
-  .container {
-    display: flex;
-    flex-direction: column;
+  .category-tree {
+    width: 15%;
+    margin: 0;
+    flex-direction: row;
     justify-content: left;
     align-items: center;
   }

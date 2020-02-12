@@ -2,8 +2,8 @@
   <div>
     <Topbar/>
     <div id="app">
-      <CategoryTree id="sidebar"/>
-      <nuxt id="app-body"/>
+      <CategoryTree/>
+      <nuxt id="main-body"/>
       <Cart/>
     </div>
   </div>
@@ -23,16 +23,18 @@
   * {
     margin: 0;
     padding: 0;
+  }
+
+  html {
     box-sizing: border-box;
   }
 
   #app {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
 
-    #sidebar {
-      max-width: 300px;
-      margin: 0
+    #main-body {
+      width: 70%;
     }
   }
 </style>

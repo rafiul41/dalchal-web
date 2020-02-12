@@ -20,8 +20,8 @@
 
 <style lang="scss">
   .cart {
-    height: 95vh;
-    width: 30vh;
+    height: 95%;
+    width: 15%;
 
     .heading {
       text-align: center;

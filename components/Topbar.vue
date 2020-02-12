@@ -1,13 +1,13 @@
 <template>
-  <div class="row">
-    <div id="sidebar-toggle" class="col-1"></div>
-    <div id="dalchal-logo" class="col-2">
+  <div class="top-bar">
+    <div id="sidebar-toggle"></div>
+    <div id="dalchal-logo">
       <nuxt-link to="/">DALCHAL LOGO</nuxt-link>
     </div>
-    <div id="search-box" class="col-7">
+    <div id="search-box">
       <input v-model="searchString" v-on:keyup="navigateToSearch" id="search-input">
     </div>
-    <div id="others" class="col-2"></div>
+    <div id="others"></div>
   </div>
 </template>
 
@@ -36,19 +36,28 @@
 </script>
 
 <style lang="scss">
-  .row {
+  .top-bar {
+    z-index: 1;
     height: 55px;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    margin-top: -55px;
     #sidebar-toggle {
       background: orange;
+      width: 5%;
     }
     #dalchal-logo {
       background: rebeccapurple;
+      width: 10%;
     }
     #search-box {
       background: aquamarine;
+      width: 60%;
     }
     #others {
       background: aqua;
+      width: 25%;
     }
   }
 </style>

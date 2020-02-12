@@ -32,6 +32,8 @@
   #app {
     display: flex;
     flex-direction: row;
+    position: relative;
+    margin-top: 55px;
 
     #main-body {
       width: 70%;

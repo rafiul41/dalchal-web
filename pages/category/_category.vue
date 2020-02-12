@@ -7,9 +7,9 @@
         <div>{{selectedCategory.name}}</div>
       </div>
       <div v-if="!isProductToBeShown" class="subcategory">
-        <div v-for="subCategory in selectedCategory.subCategories" :key="subCategory.name">
+        <div class="subcategory-content" v-for="subCategory in selectedCategory.subCategories" :key="subCategory.name">
           <img @click="navigateToCategory(subCategory)" :src="subCategory.background" alt="">
-          <div>{{subCategory.name}}</div>
+          <div @click="navigateToCategory(subCategory)">{{subCategory.name}}</div>
         </div>
       </div>
       <div v-else>
@@ -82,18 +82,30 @@
   .main-category {
     .main-category-contents {
       img {
-        height: 150px;
-        width: 250px;
+        height: 200px;
+        width: 500px;
       }
+
       text-align: center;
     }
+
     .subcategory {
       display: flex;
       margin: 10px;
       align-items: flex-start;
+      text-align: center;
+
       img {
-        height: 100px;
-        width: 180px;
+        margin: 10px;
+        height: 170px;
+        width: 260px;
+      }
+
+      .subcategory-content {
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
       }
     }
   }

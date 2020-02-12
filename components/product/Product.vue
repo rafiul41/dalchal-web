@@ -1,5 +1,5 @@
 <template>
-  <div class="product">
+  <div>
     <img :src="productInfo.background" alt="">
     <div>{{productInfo.name}}</div>
     <button v-if="!cartProductList[productInfo._id]" @click="addProductToCart(productInfo)">Add to bag</button>
@@ -26,12 +26,4 @@
 </script>
 
 <style lang="scss">
-  .product {
-    text-align: center;
-
-    img {
-      height: 100px;
-      width: 180px;
-    }
-  }
 </style>

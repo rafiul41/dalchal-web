@@ -4,7 +4,11 @@
     <div v-else class="main-category">
       <div class="main-category-contents">
         <img :src="selectedCategory.background" alt="">
-        <div>{{selectedCategory.name}}</div>
+        <div class="main-category-title">
+          <div class="divider"></div>
+          {{selectedCategory.name}}
+          <div class="divider"></div>
+        </div>
       </div>
       <div v-if="!isProductToBeShown" class="subcategory">
         <div class="subcategory-content" v-for="subCategory in selectedCategory.subCategories" :key="subCategory.name">
@@ -80,8 +84,26 @@
 
 <style lang="scss">
   .main-category {
-    margin-top: 55px;
+
     .main-category-contents {
+      font-family: Arial;
+      font-size: x-large;
+      color: #6c7078;
+
+      .main-category-title {
+        padding-top: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        .divider {
+          margin-top: 20px;
+          height: 1px;
+          width: 35%;
+          background: #50525a;
+        }
+      }
+
       img {
         height: 200px;
         width: 500px;

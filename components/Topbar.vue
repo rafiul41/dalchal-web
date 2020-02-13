@@ -9,7 +9,8 @@
     </div>
     <nuxt-link id="dalchal-logo" to="/"></nuxt-link>
     <div id="search-box">
-      <input v-model="searchString" v-on:keyup="navigateToSearch" id="search-input">
+      <input v-model="searchString" placeholder="Search for products (e.g. milk, alu, eggs)"
+             v-on:keyup="navigateToSearch" id="search-input">
     </div>
     <div id="others"></div>
   </div>
@@ -32,7 +33,7 @@
       },
       toggleNavBar() {
         const sidebarElement = document.getElementById('sidebar');
-        if(sidebarElement.style.display === 'none') {
+        if (sidebarElement.style.display === 'none') {
           sidebarElement.style.display = 'flex';
         } else {
           sidebarElement.style.display = 'none';
@@ -89,11 +90,19 @@
     }
 
     #search-box {
-      width: 60%;
+      display: flex;
+      width: 65%;
+
+      input {
+        margin: 7px;
+        padding: 10px;
+        flex-grow: 1;
+        border-radius: 5px;
+      }
     }
 
     #others {
-      width: 25%;
+      width: 10%;
     }
   }
 </style>

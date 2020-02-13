@@ -40,13 +40,13 @@
 <style lang="scss">
   #cart {
     min-width: 20%;
-    box-shadow: 0 0 10px #aaafbb;
 
     #cart-contents {
       position: fixed;
       height: 100%;
       width: 20%;
       border-left: 1px solid #b0b0b6;
+      box-shadow: -5px -1px 10px #aaafbb;
 
       .heading {
         background: rgba(170, 175, 187, 0.54);

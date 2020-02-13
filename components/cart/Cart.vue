@@ -21,8 +21,7 @@
 <style lang="scss">
   .cart {
     height: 95%;
-    width: 15%;
-    position: fixed;
+    flex-basis: 15%;
     right: 0;
     top: 55px;
 

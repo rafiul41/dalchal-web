@@ -32,10 +32,11 @@
   #app {
     position: relative;
     margin-top: 55px;
+    display: flex;
+    flex-direction: row;
 
     #main-body {
-      margin-left: 15%;
-      width: 70%;
+      flex-grow: 1;
     }
   }
 </style>

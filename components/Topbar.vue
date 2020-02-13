@@ -31,15 +31,11 @@
         this.searchString = '';
       },
       toggleNavBar() {
-        let sidebarLeftProperty = document.getElementById('sidebar').style.left;
-        if(sidebarLeftProperty === '-15%') {
-          document.getElementById('sidebar').style.left = '0';
-          document.getElementById('main-body').style.width = '70%';
-          document.getElementById('main-body').style.left = '-15%';
+        const sidebarElement = document.getElementById('sidebar');
+        if(sidebarElement.style.display === 'none') {
+          sidebarElement.style.display = 'flex';
         } else {
-          document.getElementById('sidebar').style.left = '-15%';
-          document.getElementById('main-body').style.width = '80%';
-          document.getElementById('main-body').style.left = '0';
+          sidebarElement.style.display = 'none';
         }
       }
     },

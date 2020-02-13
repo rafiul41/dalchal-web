@@ -1,6 +1,8 @@
 <template>
   <div id="sidebar">
-    <Category v-for="category in allCategories" :key="category.name" :category="category"/>
+    <div id="sidebar-contents">
+      <Category v-for="category in allCategories" :key="category.name" :category="category"/>
+    </div>
   </div>
 </template>
 
@@ -39,7 +41,7 @@
           element.children[1].style.display = 'inherit';
         }
 
-        if (element.parentElement.id === 'sidebar') {
+        if (element.parentElement.id === 'sidebar-contents') {
           return;
         }
 
@@ -57,14 +59,14 @@
 
 <style lang="scss">
   #sidebar {
-    position: fixed;
-    height: 100%;
-    width: 15%;
+    min-width: 15%;
     margin: 0;
-    flex-direction: row;
-    justify-content: left;
-    align-items: center;
-    border-right: 1px solid #b0b0b6;
-    transition: left ease-out 0.5s;
+
+    #sidebar-contents {
+      position: fixed;
+      border-right: 1px solid #b0b0b6;
+      width: 15%;
+      height: 100%;
+    }
   }
 </style>

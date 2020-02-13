@@ -24,7 +24,10 @@
 
 <style lang="scss">
   .category-btn {
-    margin-left: 15px;
+    font-family: "Droid Sans";
+    border-left: 1px solid #b0b0b6;
+    margin-left: 10px;
+    padding-left: 15px;
     .category-btn-name {
       &:hover {
         cursor: pointer;

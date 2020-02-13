@@ -4,17 +4,19 @@
       <div class="heading">
         {{Object.keys(cartProductList).length}} Items
       </div>
-      <div v-for="product in cartProductList" :key="product._id" class="cart-products">
-        <div class="product-count">{{product.inBag}}</div>
-        <div class="product-info">
-          <img :src="product.background" alt="productImage">
-          <div class="product-heading-weight">
-            <div class="product-heading">{{product.name}}</div>
-            <div class="product-weight">{{product.weight}}</div>
+      <div id="cart-product-list">
+        <div v-for="product in cartProductList" :key="product._id" class="cart-products">
+          <div class="product-count">{{product.inBag}}</div>
+          <div class="product-info">
+            <img :src="product.background" alt="productImage">
+            <div class="product-heading-weight">
+              <div class="product-heading">{{product.name}}</div>
+              <div class="product-weight">{{product.weight}}</div>
+            </div>
           </div>
+          <div class="product-cost">{{product.cost * product.inBag}}</div>
+          <img @click="removeItem(product)" class="cross-button" src="../../static/cross.png" alt="cross">
         </div>
-        <div class="product-cost">{{product.cost * product.inBag}}</div>
-        <img @click="removeItem(product)" class="cross-button" src="../../static/cross.png" alt="cross">
       </div>
       <div class="cart-footer">
         <button id="order-button">Place Order</button>
@@ -39,12 +41,14 @@
 
 <style lang="scss">
   #cart {
-    min-width: 20%;
+    min-width: 17%;
 
     #cart-contents {
+      display: flex;
       position: fixed;
+      flex-direction: column;
       height: 100%;
-      width: 20%;
+      width: 17%;
       border-left: 1px solid #b0b0b6;
       box-shadow: -5px -1px 10px #aaafbb;
 
@@ -58,61 +62,72 @@
         text-align: left;
       }
 
-      .cart-products {
-        color: #50525a;
-        height: 55px;
-        display: flex;
-        border-bottom: 1px solid #c8c8ce;
-
-        .product-count {
-          width: 35px;
-          text-align: center;
-          padding-top: 15px;
-        }
-
-        .product-info {
-          padding-left: 15px;
+      #cart-product-list {
+        overflow: auto;
+        height: 80%;
+        .cart-products {
+          color: #50525a;
+          height: 55px;
           display: flex;
-          img {
+          border-bottom: 1px solid #c8c8ce;
+
+          .product-count {
+            width: 35px;
+            text-align: center;
+            padding-top: 15px;
+          }
+
+          .product-info {
+            padding-left: 15px;
+            display: flex;
+
+            img {
+              padding-top: 10px;
+              height: 45px;
+              width: 40px;
+            }
+
+            .product-heading-weight {
+              width: 120px;
+              padding-left: 20px;
+              flex-direction: column;
+
+              .product-heading {
+                padding-top: 5px;
+                font-size: small;
+              }
+
+              .product-weight {
+                font-size: smaller;
+              }
+            }
+          }
+
+          .product-cost {
+            width: 30px;
             padding-top: 10px;
-            height: 45px;
-            width: 40px;
           }
-          .product-heading-weight {
-            width: 120px;
-            padding-left: 20px;
-            flex-direction: column;
-            .product-heading {
-              padding-top: 5px;
-              font-size: small;
+
+          .cross-button {
+            height: 18px;
+            width: 18px;
+            margin-top: 14px;
+            margin-left: 30px;
+
+            &:hover {
+              cursor: pointer;
             }
-            .product-weight {
-              font-size: smaller;
-            }
-          }
-        }
-        .product-cost {
-          width: 30px;
-          padding-top: 10px;
-        }
-        .cross-button {
-          height: 18px;
-          width: 18px;
-          margin-top: 14px;
-          margin-left: 30px;
-          &:hover {
-            cursor: pointer;
           }
         }
       }
+
       .cart-footer {
-        position: fixed;
         bottom: 0;
         display: flex;
         height: 100px;
-        width: 300px;
         align-items: center;
         justify-content: center;
+
         #order-button {
           color: white;
           height: 50px;
@@ -121,6 +136,7 @@
           border-top-left-radius: 5px;
           border-bottom-left-radius: 5px;
         }
+
         #total-cost {
           color: white;
           height: 45px;

@@ -29,8 +29,8 @@
   .product-contents {
     img {
       margin: 10px;
-      height: 135px;
-      width: 220px;
+      height: 150px;
+      width: 233px;
     }
   }
 </style>

@@ -65,5 +65,6 @@
     justify-content: left;
     align-items: center;
     border-right: 1px solid #b0b0b6;
+    transition: left ease-out 0.5s;
   }
 </style>

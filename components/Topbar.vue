@@ -85,6 +85,7 @@
     #dalchal-logo {
       width: 10%;
       background: url('../static/chaldal-logo.png');
+      background-repeat: no-repeat;
     }
 
     #search-box {

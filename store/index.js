@@ -43,6 +43,10 @@ export const mutations = {
       Vue.set(state.cartProducts, product._id, updatedProduct);
     }
     Vue.set(state, 'totalCost', state.totalCost - product.cost);
+  },
+  removeItem(state, product) {
+    Vue.set(state, 'totalCost', state.totalCost - (product.cost * product.inBag));
+    Vue.delete(state.cartProducts, product._id);
   }
 };
 

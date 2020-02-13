@@ -60,7 +60,6 @@
 <style lang="scss">
   #sidebar {
     min-width: 15%;
-    margin: 0;
 
     #sidebar-contents {
       position: fixed;

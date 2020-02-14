@@ -24,6 +24,7 @@
 </template>
 
 <script>
+  import {mapMutations, mapGetters} from 'vuex';
   import ProductList from "../../components/product/ProductList";
 
   export default {
@@ -34,26 +35,22 @@
       };
     },
     computed: {
-      allCategories() {
-        return this.$store.getters.loadedCategories;
-      },
-      selectedCategory() {
-        return this.$store.getters.selectedCategory;
-      }
+      ...mapGetters(['loadedCategories', 'selectedCategory'])
     },
     methods: {
+      ...mapMutations(['clearSelectedCategory', 'setSelectedCategory']),
       navigateToCategory(category) {
-        this.$store.commit('setSelectedCategory', category);
+        this.setSelectedCategory(category);
         this.$router.push('/category/' + this.selectedCategory.url);
       },
       searchForCategory(categoryId) {
-        this.allCategories.forEach(category => {
+        this.loadedCategories.forEach(category => {
           this.findAndAssignCategory(category, categoryId);
         });
       },
       findAndAssignCategory(category, categoryId) {
         if (category.url === categoryId) {
-          this.$store.commit('setSelectedCategory', category);
+          this.setSelectedCategory(category);
           return;
         }
         if (category.subCategories.length === 0) {
@@ -71,12 +68,13 @@
         this.searchForCategory(category);
       }
 
-      if (this.selectedCategory.subCategories.length === 0) {
+      if (this.selectedCategory.url && this.selectedCategory.subCategories.length === 0) {
         this.isProductToBeShown = true;
       }
-
+    },
+    mounted() {
       if (this.selectedCategory.url) {
-        this.$eventBus.$emit('unfoldCategory', category);
+        this.$eventBus.$emit('unfoldCategory', this.$route.params.category);
       }
     }
   }

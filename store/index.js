@@ -7,7 +7,9 @@ export const state = () => ({
   // Cart variables
   totalCost: 0,
   discount: 0,
-  cartProducts: {}
+  cartProducts: {},
+  //user
+  userInfo: {}
 });
 
 
@@ -46,6 +48,11 @@ export const mutations = {
   removeItem(state, product) {
     Vue.set(state, 'totalCost', state.totalCost - (product.cost * product.inBag));
     Vue.delete(state.cartProducts, product._id);
+  },
+  //user
+  setUserInfo(state, user) {
+    console.log(user);
+    Vue.set(state, 'userInfo', user);
   }
 };
 
@@ -59,6 +66,16 @@ export const actions = {
       })
       .catch(err => {
         return Promise.reject(err);
+      })
+  },
+  fetchUser(vuexContext, mobileNumber) {
+    return this.$axios
+      .get('/user/' + mobileNumber)
+      .then(response => {
+        vuexContext.commit('setUserInfo', response.data.data);
+      })
+      .catch(err => {
+        console.log(err);
       })
   }
 };
@@ -79,5 +96,9 @@ export const getters = {
   },
   totalCost(state) {
     return state.totalCost;
+  },
+  //user
+  getUserName(state) {
+    return state.userInfo.name;
   }
 };

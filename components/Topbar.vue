@@ -13,10 +13,10 @@
              v-on:keyup="navigateToSearch" id="search-input">
     </div>
     <div v-if="$auth.loggedIn" class="logged-in-buttons">
-      <div id="user-button">{{$auth.user.name}}</div>
-      <div id="logout-button">Logout</div>
+      <div id="user-button">{{getUserName}}</div>
+      <div @click="$auth.logout()" id="logout-button">Logout</div>
     </div>
-    <div class="logged-out-buttons">
+    <div v-else class="logged-out-buttons">
       <div id="register-button">Register</div>
       <div @click="navigateToLogin" id="sign-in-button">Sign In</div>
     </div>
@@ -24,11 +24,15 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex';
   export default {
     data() {
       return {
         searchString: ''
       }
+    },
+    computed: {
+      ...mapGetters(['getUserName']),
     },
     methods: {
       navigateToLogin() {

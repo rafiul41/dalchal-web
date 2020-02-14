@@ -1,29 +1,43 @@
 <template>
   <div>
     <form @submit.prevent="onSubmit">
-      <label>Name</label>
-      <input id="name" type="text" v-model="name" placeholder="Please enter your name">
-      <label>Password</label>
-      <input id="password" type="text" v-model="password" placeholder="Please enter your password">
       <label>Mobile Number</label>
       <input id="mobile-number" type="text" v-model="mobileNumber" placeholder="Please enter your mobile number">
-      <button>Register</button>
+      <label>Password</label>
+      <input id="password" type="text" v-model="password" placeholder="Please enter your password">
+      <button>Sign In</button>
     </form>
   </div>
 </template>
 
 <script>
+  import {mapActions} from 'vuex';
+
   export default {
     data() {
       return {
-        name: '',
         password: '',
         mobileNumber: ''
       }
     },
     methods: {
+      ...mapActions(['fetchUser']),
       onSubmit() {
-        console.log(this.name, this.password, this.mobileNumber)
+        return this.$auth.loginWith('local', {
+          data: {
+            mobileNumber: this.mobileNumber,
+            password: this.password
+          }
+        })
+          .then(() => {
+            return this.fetchUser(this.mobileNumber);
+          })
+          .then(response => {
+            console.log('IN LOGIN PAGE', response);
+          })
+          .catch(err => {
+            console.log(err);
+          })
       }
     }
   }

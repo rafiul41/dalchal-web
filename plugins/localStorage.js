@@ -3,7 +3,7 @@ import createPersistedState from 'vuex-persistedstate'
 export default ({store}) => {
   window.onNuxtReady(() => {
     createPersistedState({
-      paths: ['cartProducts', 'totalCost', 'discount']
+      paths: ['cartProducts', 'totalCost', 'discount', 'userInfo']
     })(store)
   })
 }

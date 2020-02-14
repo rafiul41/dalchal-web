@@ -1,4 +1,3 @@
-import axios from 'axios';
 import Vue from 'vue';
 
 export const state = () => ({
@@ -52,7 +51,7 @@ export const mutations = {
 
 export const actions = {
   nuxtServerInit(vuexContext) {
-    return axios
+    return this.$axios
       .get(process.env.apiUrl + "/categories")
       .then(response => {
         vuexContext.commit('setCategories', response.data.data);

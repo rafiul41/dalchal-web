@@ -5,7 +5,6 @@
 </template>
 
 <script>
-  import axios from 'axios';
   import Product from "./Product";
   import {mapGetters} from 'vuex';
 
@@ -16,7 +15,7 @@
     },
     methods: {
       fetchProducts() {
-        return axios
+        return this.$axios
           .get(process.env.apiUrl + "/product?categoryId=" + this.selectedCategory._id)
           .then(response => {
             this.$store.commit('setProducts', response.data.data);

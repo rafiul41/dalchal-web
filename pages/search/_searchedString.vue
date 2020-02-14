@@ -7,7 +7,6 @@
 </template>
 
 <script>
-  import axios from 'axios'
   import Product from "../../components/product/Product";
 
   export default {
@@ -19,7 +18,7 @@
     components: {Product},
     methods: {
       fetchSearchedProducts() {
-        axios.get(process.env.apiUrl + '/product/search?searchString=' + this.$route.params.searchedString)
+        this.$axios.get(process.env.apiUrl + '/product/search?searchString=' + this.$route.params.searchedString)
           .then(response => {
             this.searchedProducts = response.data.data;
             return Promise.resolve();

@@ -18,7 +18,7 @@
     components: {Product},
     methods: {
       fetchSearchedProducts() {
-        this.$axios.get(process.env.apiUrl + '/product/search?searchString=' + this.$route.params.searchedString)
+        this.$axios.get('/product/search?searchString=' + this.$route.params.searchedString)
           .then(response => {
             this.searchedProducts = response.data.data;
             return Promise.resolve();

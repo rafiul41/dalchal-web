@@ -12,7 +12,14 @@
       <input v-model="searchString" placeholder="Search for products (e.g. milk, alu, eggs)"
              v-on:keyup="navigateToSearch" id="search-input">
     </div>
-    <div id="others"></div>
+    <div v-if="$auth.loggedIn" class="logged-in-buttons">
+      <div id="user-button">{{$auth.user.name}}</div>
+      <div id="logout-button">Logout</div>
+    </div>
+    <div class="logged-out-buttons">
+      <div id="register-button">Register</div>
+      <div @click="navigateToLogin" id="sign-in-button">Sign In</div>
+    </div>
   </div>
 </template>
 
@@ -24,6 +31,9 @@
       }
     },
     methods: {
+      navigateToLogin() {
+        this.$router.push('/login');
+      },
       navigateToSearch() {
         const searchUrl = '/search/' + this.searchString;
         this.$router.push(searchUrl);
@@ -101,8 +111,34 @@
       }
     }
 
-    #others {
-      width: 10%;
+    .logged-in-buttons {
+      display: flex;
+      margin-left: 40px;
+      margin-top: 15px;
+      color: #535353;
+      font-weight: bold;
+      cursor: pointer;
+      #user-button {
+        margin-left: 20px;
+
+      }
+      #logout-button {
+        margin-left: 30px;
+      }
+    }
+    .logged-out-buttons {
+      display: flex;
+      margin-left: 40px;
+      margin-top: 15px;
+      color: #535353;
+      font-weight: bold;
+      cursor: pointer;
+      #register-button {
+        margin-left: 20px;
+      }
+      #sign-in-button {
+        margin-left: 30px;
+      }
     }
   }
 </style>

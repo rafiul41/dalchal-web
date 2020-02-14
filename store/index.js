@@ -52,7 +52,7 @@ export const mutations = {
 export const actions = {
   nuxtServerInit(vuexContext) {
     return this.$axios
-      .get(process.env.apiUrl + "/categories")
+      .get("/categories")
       .then(response => {
         vuexContext.commit('setCategories', response.data.data);
         return Promise.resolve();

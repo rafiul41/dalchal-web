@@ -16,7 +16,7 @@
     methods: {
       fetchProducts() {
         return this.$axios
-          .get(process.env.apiUrl + "/product?categoryId=" + this.selectedCategory._id)
+          .get("/product?categoryId=" + this.selectedCategory._id)
           .then(response => {
             this.$store.commit('setProducts', response.data.data);
             return Promise.resolve();

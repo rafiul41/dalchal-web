@@ -52,12 +52,21 @@ export default {
     extend(config, ctx) {
     }
   },
-  env: {
-    apiUrl: "https://dalchal-api.herokuapp.com/api"
+  axios: {
+    baseURL: "https://dalchal-api.herokuapp.com/api"
   },
   vue: {
     config: {
       devTools: true
+    }
+  },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {url: 'user/authenticate', method: 'post', propertyName: 'data.token'}
+        }
+      }
     }
   }
 }

@@ -17,8 +17,8 @@
       <div @click="$auth.logout()" id="logout-button">Logout</div>
     </div>
     <div v-else class="logged-out-buttons">
-      <div id="register-button">Register</div>
-      <div @click="navigateToLogin" id="sign-in-button">Sign In</div>
+      <div @click="$router.push('/register')" id="register-button">Register</div>
+      <div @click="$router.push('/login')" id="sign-in-button">Sign In</div>
     </div>
   </div>
 </template>
@@ -35,9 +35,6 @@
       ...mapGetters(['getUserName']),
     },
     methods: {
-      navigateToLogin() {
-        this.$router.push('/login');
-      },
       navigateToSearch() {
         const searchUrl = '/search/' + this.searchString;
         this.$router.push(searchUrl);

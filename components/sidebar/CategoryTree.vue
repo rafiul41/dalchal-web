@@ -50,7 +50,6 @@
     },
     mounted: function () {
       this.$eventBus.$on('unfoldCategory', (categoryId) => {
-        console.log('dhukse category tree er event e', categoryId);
         this.foldAll();
         this.unfoldCategory(categoryId);
       })

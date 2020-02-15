@@ -38,7 +38,7 @@ export const mutations = {
       Vue.set(state.cartProducts, product._id, updatedProduct);
     }
     Vue.set(state, 'totalCost', state.totalCost + product.cost);
-    if(!state.isPromoApplied && (state.totalCost >= state.minPromoCost)) {
+    if(!state.isPromoApplied && state.promoCode && (state.totalCost >= state.minPromoCost)) {
       Vue.set(state, 'isPromoApplied', true);
     }
   },

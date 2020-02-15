@@ -12,6 +12,7 @@
 
 <script>
   import {mapActions} from 'vuex';
+  import {config} from './../../static/swalConfig';
 
   export default {
     data() {
@@ -23,6 +24,9 @@
     methods: {
       ...mapActions(['fetchUser']),
       onSubmit() {
+        this.type = 'customLoading';
+        this.$swal.fire({title: 'Please wait', allowOutsideClick: false});
+        this.$swal.showLoading();
         return this.$auth.loginWith('local', {
           data: {
             mobileNumber: this.mobileNumber,
@@ -30,9 +34,12 @@
           }
         })
           .then(() => {
+            this.$swal.close();
+            this.$swal.fire(config.success('You are successfully logged in'));
             return this.fetchUser(this.mobileNumber);
           })
           .catch(err => {
+            this.$swal.fire(config.error);
             console.log(err);
           })
       }

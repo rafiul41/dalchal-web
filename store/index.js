@@ -51,7 +51,6 @@ export const mutations = {
   },
   //user
   setUserInfo(state, user) {
-    console.log(user);
     Vue.set(state, 'userInfo', user);
   }
 };
@@ -73,9 +72,6 @@ export const actions = {
       .get('/user/' + mobileNumber)
       .then(response => {
         vuexContext.commit('setUserInfo', response.data.data);
-      })
-      .catch(err => {
-        console.log(err);
       })
   }
 };

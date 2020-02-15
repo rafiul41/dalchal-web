@@ -21,7 +21,9 @@ export default {
   /*
   ** Global CSS
   */
-  css: [],
+  css: [{
+    src: '~node_modules/sweetalert2/dist/sweetalert2.min.css'
+  }],
   /*
   ** Plugins to load before mounting the App
   */
@@ -40,7 +42,8 @@ export default {
     // Doc: https://bootstrap-vue.js.org
     'bootstrap-vue/nuxt',
     '@nuxtjs/axios',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
+    'vue-sweetalert2/nuxt'
   ],
   /*
   ** Build configuration

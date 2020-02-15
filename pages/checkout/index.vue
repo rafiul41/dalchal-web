@@ -86,7 +86,8 @@
             this.$swal.fire(config.error);
           })
       }
-    }
+    },
+    middleware: ['auth']
   }
 </script>
 

@@ -57,6 +57,9 @@
         return this.$axios
           .get('/order?userId=' + this.userId)
           .then(response => {
+            if(response.data.statusCode !== 200) {
+              return Promise.reject(response.data.message);
+            }
             this.orders = response.data.data;
             this.isOrdersLoaded = true;
           })

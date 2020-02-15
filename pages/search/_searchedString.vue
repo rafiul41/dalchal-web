@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div v-if="searchedProducts.length === 0" class="text-center">
+      <b-spinner style="width: 3rem; height: 3rem;" class="m-5"></b-spinner>
+    </div>
     <div class="searched-products">
       <Product v-for="product in searchedProducts" :key="product.code" :productInfo="product"/>
     </div>

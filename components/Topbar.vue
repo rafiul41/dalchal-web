@@ -13,7 +13,16 @@
              v-on:keyup="navigateToSearch" id="search-input">
     </div>
     <div v-if="$auth.loggedIn" class="logged-in-buttons">
-      <div id="user-button">{{getUserName}}</div>
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+          {{getUserName}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a @click="$router.push('/profile')" class="dropdown-item">Your Profile</a>
+          <a @click="$router.push('/orders')" class="dropdown-item">Your Orders</a>
+        </div>
+      </div>
       <div @click="$auth.logout()" id="logout-button">Logout</div>
     </div>
     <div v-else class="logged-out-buttons">
@@ -25,6 +34,7 @@
 
 <script>
   import {mapGetters} from 'vuex';
+
   export default {
     data() {
       return {
@@ -119,14 +129,30 @@
       color: #535353;
       font-weight: bold;
       cursor: pointer;
-      #user-button {
-        margin-left: 20px;
 
+      .dropdown {
+        align-self: center;
+        box-sizing: border-box;
+        margin-bottom: 15px;
+
+        button {
+          background: rgba(255, 133, 19, 0.88);
+        }
+
+        &:hover > .dropdown-menu {
+          display: block;
+        }
+
+        & > .dropdown-toggle:active {
+          pointer-events: none;
+        }
       }
+
       #logout-button {
         margin-left: 30px;
       }
     }
+
     .logged-out-buttons {
       display: flex;
       margin-left: 40px;
@@ -134,9 +160,11 @@
       color: #535353;
       font-weight: bold;
       cursor: pointer;
+
       #register-button {
         margin-left: 20px;
       }
+
       #sign-in-button {
         margin-left: 30px;
       }

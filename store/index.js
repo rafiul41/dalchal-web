@@ -105,5 +105,8 @@ export const getters = {
   },
   userId(state) {
     return state.userInfo._id;
+  },
+  userInfo(state) {
+    return state.userInfo;
   }
 };

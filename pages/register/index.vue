@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="register-title">Register</div>
-    <form @submit="checkForm" class="form-group card-body" @submit.prevent="onSubmit">
+    <form class="form-group card-body" @submit.prevent="onSubmit">
       <label class="col-form-label">Name</label><br>
       <input class="form-control" id="name" type="text" v-model="name" placeholder="Please enter your name"><br>
       <label class="col-form-label">Mobile Number</label><br>
@@ -39,10 +39,6 @@
       }
     },
     methods: {
-      checkForm() {
-        if (this.name) return true;
-        e.preventDefault();
-      },
       onSubmit() {
         this.$swal.fire('Please wait');
         this.$swal.showLoading();

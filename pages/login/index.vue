@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="sign-in">Sign In</div>
-    <form @submit.prevent="onSubmit">
-      <label>Mobile Number</label><br>
-      <input class="sign-in-input" type="text" v-model="mobileNumber" placeholder="Please enter your mobile number"><br>
-      <label>Password</label><br>
-      <input class="sign-in-input" type="password" v-model="password" placeholder="Please enter your password"><br>
-      <button class="btn-lg">Sign In</button>
+    <form class="form-group card-body" @submit.prevent="onSubmit">
+      <label class="col-form-label">Mobile Number</label><br>
+      <input class="form-control" type="text" v-model="mobileNumber" placeholder="Please enter your mobile number"><br>
+      <label class="col-form-label">Password</label><br>
+      <input class="form-control" type="password" v-model="password" placeholder="Please enter your password"><br>
+      <button class="btn-lg btn-block">Sign In</button>
     </form>
   </div>
 </template>
@@ -60,9 +60,5 @@
     text-align: center;
     font-weight: bold;
     font-size: x-large;
-  }
-
-  .sign-in-input {
-    width: 40%;
   }
 </style>

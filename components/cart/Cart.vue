@@ -29,7 +29,8 @@
           </div>
           <div v-if="codeOpen">
             <div v-if="promoCode && totalCost < minPromoCost">
-              Minimum Order Total Of Tk{{minPromoCost}} is Required To Use This Discount
+              <div>Minimum Order Total Of Tk{{minPromoCost}}</div>
+              <div>is Required To Use This Discount</div>
             </div>
             <div v-if="promoCode && totalCost >= minPromoCost">Discount {{promoRate}}% Applied</div>
             <button @click="changeCode" v-if="promoCode">Change Code</button>
@@ -176,7 +177,7 @@
         text-align: center;
         display: flex;
         height: 20%;
-        align-items: flex-start;
+        align-items: center;
         align-content: center;
         flex-direction: column;
         justify-content: center;

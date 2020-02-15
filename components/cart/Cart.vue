@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="cart-footer">
-        <button id="order-button">Place Order</button>
+        <button @click="$router.push('/checkout')" id="order-button">Place Order</button>
         <div id="total-cost">Tk: {{totalCost}}</div>
       </div>
     </div>

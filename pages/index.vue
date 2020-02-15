@@ -6,6 +6,14 @@
   </div>
 </template>
 
+<script>
+  export default {
+    created() {
+      this.$eventBus.$emit('foldAll');
+    }
+  }
+</script>
+
 <style>
   .search-text {
     font-weight: bold;

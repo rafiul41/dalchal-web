@@ -49,6 +49,9 @@ export const mutations = {
     Vue.set(state, 'totalCost', state.totalCost - (product.cost * product.inBag));
     Vue.delete(state.cartProducts, product._id);
   },
+  clearCart(state) {
+    Vue.set(state, 'cartProducts', {});
+  },
   //user
   setUserInfo(state, user) {
     Vue.set(state, 'userInfo', user);
@@ -96,5 +99,11 @@ export const getters = {
   //user
   getUserName(state) {
     return state.userInfo.name;
+  },
+  userAddresses(state) {
+    return state.userInfo.addresses;
+  },
+  userId(state) {
+    return state.userInfo._id;
   }
 };

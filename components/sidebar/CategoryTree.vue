@@ -52,7 +52,8 @@
       this.$eventBus.$on('unfoldCategory', (categoryId) => {
         this.foldAll();
         this.unfoldCategory(categoryId);
-      })
+      });
+      this.$eventBus.$on('foldAll', () => this.foldAll());
     }
   }
 </script>

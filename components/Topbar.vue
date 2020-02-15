@@ -12,7 +12,7 @@
       <input v-model="searchString" placeholder="Search for products (e.g. milk, alu, eggs)"
              v-on:keyup="navigateToSearch" id="search-input">
     </div>
-    <div v-if="$auth.loggedIn" class="logged-in-buttons">
+    <div v-if="getUserName" class="logged-in-buttons">
       <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
@@ -23,7 +23,7 @@
           <a @click="$router.push('/orders')" class="dropdown-item">Your Orders</a>
         </div>
       </div>
-      <div @click="$auth.logout()" id="logout-button">Logout</div>
+      <div @click="logout()" id="logout-button">Logout</div>
     </div>
     <div v-else class="logged-out-buttons">
       <div @click="$router.push('/register')" id="register-button">Register</div>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex';
+  import {mapGetters, mapMutations} from 'vuex';
 
   export default {
     data() {
@@ -45,6 +45,11 @@
       ...mapGetters(['getUserName']),
     },
     methods: {
+      ...mapMutations(['clearUser']),
+      logout() {
+        this.$auth.logout();
+        this.clearUser();
+      },
       navigateToSearch() {
         const searchUrl = '/search/' + this.searchString;
         this.$router.push(searchUrl);

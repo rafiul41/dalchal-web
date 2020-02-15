@@ -57,6 +57,9 @@ export const mutations = {
   //user
   setUserInfo(state, user) {
     Vue.set(state, 'userInfo', user);
+  },
+  clearUser(state, user) {
+    Vue.set(state, 'userInfo', {});
   }
 };
 

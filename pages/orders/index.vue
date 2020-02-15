@@ -32,6 +32,8 @@
           <div v-for="product in order.cart">
             {{product.name}} {{product.inBag}} {{product.cost}}
           </div>
+          <div>Total Cost: Tk{{order.totalCost}}</div>
+          <div v-if="order.discount">Discount: Tk{{order.discount}}</div>
         </b-modal>
       </div>
     </div>

@@ -5,7 +5,7 @@
       <div class="info-1">{{productInfo.name}}</div>
       <div class="info-2">{{productInfo.weight}}</div>
       <div v-if="!isPromoApplied" class="info-3">{{'Tk.' + productInfo.cost}}</div>
-      <div v-else class="info-3">{{'Tk. ' + ((100 - promoRate)/100) * productInfo.cost}}
+      <div v-else class="info-3">{{'Tk. ' + (((100 - promoRate)/100) * productInfo.cost).toString().substr(0, 6)}}
         <strike>{{'Tk.' + productInfo.cost}}</strike></div>
     </div>
     <button class="add-to-cart-btn" v-if="!cartProductList[productInfo._id]" @click="addProductToCart(productInfo)">

@@ -16,7 +16,7 @@
           </div>
           <div v-if="!isPromoApplied" class="product-cost">{{product.cost * product.inBag}}</div>
           <div v-else style="display: flex; flex-direction: column">
-            {{(product.cost * (100 - promoRate)/100) * product.inBag}}
+            {{((product.cost * (100 - promoRate)/100) * product.inBag).toString().substr(0, 6)}}
             <strike>{{product.cost * product.inBag}}</strike>
           </div>
           <img @click="removeItem(product)" class="cross-button" src="../../static/cross.png" alt="cross">
@@ -114,7 +114,7 @@
 
       #cart-product-list {
         overflow: auto;
-        height: 80%;
+        height: 70%;
 
         .cart-products {
           color: #50525a;
@@ -173,9 +173,10 @@
       }
 
       .cart-footer {
+        text-align: center;
         display: flex;
-        height: 250px;
-        align-items: center;
+        height: 20%;
+        align-items: flex-start;
         align-content: center;
         flex-direction: column;
         justify-content: center;

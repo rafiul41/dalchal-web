@@ -151,6 +151,10 @@
         & > .dropdown-toggle:active {
           pointer-events: none;
         }
+
+        .dropdown-menu {
+          top: 93%
+        }
       }
 
       #logout-button {

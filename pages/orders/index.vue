@@ -18,7 +18,21 @@
             <div>{{'Time range: ' + order.timeRange}}</div>
             <div>{{'Date: ' + order.date.split('T')[0]}}</div>
           </div>
+          <button @click="showDetails()" class="details-btn">
+            Show Details
+          </button>
         </div>
+        <b-modal id="my-modal">
+          <div>{{'OrderId: '+ order._id}}</div>
+          <div>{{'Tk. ' + order.totalCost}}</div>
+          <div>{{'Address: ' + order.address}}</div>
+          <div>{{'Time range: ' + order.timeRange}}</div>
+          <div>{{'Date: ' + order.date.split('T')[0]}}</div>
+          <div>CART</div>
+          <div v-for="product in order.cart">
+            {{product.name}} {{product.inBag}} {{product.cost}}
+          </div>
+        </b-modal>
       </div>
     </div>
   </div>
@@ -49,6 +63,9 @@
           .catch(() => {
             this.$swal.fire(config.error);
           })
+      },
+      showDetails() {
+        this.$bvModal.show('my-modal');
       }
     },
     created() {
@@ -70,6 +87,9 @@
       display: flex;
       border: 1px solid #b0b0b6;
       justify-content: space-around;
+    }
+    button {
+      align-self: center;
     }
   }
 </style>

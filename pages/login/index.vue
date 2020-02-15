@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import {mapActions} from 'vuex';
+  import {mapMutations} from 'vuex';
   import {config} from './../../static/swalConfig';
 
   export default {
@@ -23,7 +23,7 @@
       }
     },
     methods: {
-      ...mapActions(['fetchUser']),
+      ...mapMutations(['setUserInfo']),
       onSubmit() {
         this.type = 'customLoading';
         this.$swal.fire({title: 'Please wait', allowOutsideClick: false});
@@ -36,13 +36,17 @@
             }
           })
           .then(() => {
-            return this.fetchUser(this.mobileNumber);
+            return this.$axios.get('/user/' + this.mobileNumber);
           })
-          .then(() => {
+          .then((response) => {
+            if(response.data.statusCode !== 200 || !response.data.data) {
+              return Promise.reject(response.data.message);
+            }
+            this.setUserInfo(response.data.data);
             this.$swal.close();
             this.$swal.fire(config.success('You are successfully logged in'));
           })
-          .catch(() => {
+          .catch((err) => {
             this.$swal.close();
             this.$swal.fire(config.error);
           })

@@ -98,13 +98,6 @@ export const actions = {
       .catch(err => {
         return Promise.reject(err);
       })
-  },
-  fetchUser(vuexContext, mobileNumber) {
-    return this.$axios
-      .get('/user/' + mobileNumber)
-      .then(response => {
-        vuexContext.commit('setUserInfo', response.data.data);
-      })
   }
 };
 

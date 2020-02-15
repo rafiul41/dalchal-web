@@ -113,5 +113,8 @@ export const getters = {
   },
   userInfo(state) {
     return state.userInfo;
+  },
+  discount(state) {
+    return state.discount;
   }
 };

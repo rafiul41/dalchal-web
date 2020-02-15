@@ -44,7 +44,7 @@
       }
     },
     computed: {
-      ...mapGetters(['userAddresses', 'cartProductList', 'userId', 'totalCost']),
+      ...mapGetters(['userAddresses', 'cartProductList', 'userId', 'totalCost', 'discount']),
       dateOptions() {
         const dates = [];
         for (let ind = 0; ind < 5; ind++) {
@@ -69,7 +69,8 @@
           address: this.selectedAddress,
           userId: this.userId,
           cart: this.cartProductList,
-          totalCost: this.totalCost
+          totalCost: this.totalCost,
+          discount: this.discount
         };
 
         this.$swal.fire('Please wait');

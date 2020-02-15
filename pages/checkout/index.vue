@@ -44,7 +44,7 @@
       }
     },
     computed: {
-      ...mapGetters(['userAddresses', 'cartProductList', 'userId', 'totalCost', 'discount']),
+      ...mapGetters(['userAddresses', 'cartProductList', 'userId', 'totalCost', 'isPromoApplied', 'promoRate']),
       dateOptions() {
         const dates = [];
         for (let ind = 0; ind < 5; ind++) {
@@ -69,9 +69,13 @@
           address: this.selectedAddress,
           userId: this.userId,
           cart: this.cartProductList,
-          totalCost: this.totalCost,
-          discount: this.discount
+          totalCost: this.totalCost
         };
+
+        if (this.isPromoApplied) {
+          order.discount = totalCost * (this.promoRate / 100);
+          order.totalCost = order.totalCost - order.discount;
+        }
 
         this.$swal.fire('Please wait');
         this.$swal.showLoading();

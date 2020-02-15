@@ -6,10 +6,14 @@ export const state = () => ({
   selectedCategory: {},
   // Cart variables
   totalCost: 0,
-  discount: 0,
   cartProducts: {},
   //user
-  userInfo: {}
+  userInfo: {},
+  //promo
+  promoCode: null,
+  isPromoApplied: false,
+  promoRate: 0,
+  minPromoCost: null
 });
 
 
@@ -34,6 +38,9 @@ export const mutations = {
       Vue.set(state.cartProducts, product._id, updatedProduct);
     }
     Vue.set(state, 'totalCost', state.totalCost + product.cost);
+    if(!state.isPromoApplied && (state.totalCost >= state.minPromoCost)) {
+      Vue.set(state, 'isPromoApplied', true);
+    }
   },
   decreaseAmount(state, product) {
     if (state.cartProducts[product._id].inBag === 1) {
@@ -44,6 +51,9 @@ export const mutations = {
       Vue.set(state.cartProducts, product._id, updatedProduct);
     }
     Vue.set(state, 'totalCost', state.totalCost - product.cost);
+    if(state.isPromoApplied && (state.totalCost < state.minPromoCost)) {
+      Vue.set(state, 'isPromoApplied', false);
+    }
   },
   removeItem(state, product) {
     Vue.set(state, 'totalCost', state.totalCost - (product.cost * product.inBag));
@@ -52,7 +62,6 @@ export const mutations = {
   clearCart(state) {
     Vue.set(state, 'cartProducts', {});
     Vue.set(state, 'totalCost', 0);
-    Vue.set(state, 'discount', 0);
   },
   //user
   setUserInfo(state, user) {
@@ -60,6 +69,21 @@ export const mutations = {
   },
   clearUser(state, user) {
     Vue.set(state, 'userInfo', {});
+  },
+  //promo
+  updatePromo(state, promo) {
+    Vue.set(state, 'promoCode', promo.code);
+    Vue.set(state, 'promoRate', promo.rate);
+    Vue.set(state, 'minPromoCost', promo.minCost);
+    if(state.totalCost >= promo.minCost) {
+      Vue.set(state, 'isPromoApplied', true);
+    }
+  },
+  clearPromo(state, promo) {
+    Vue.set(state, 'promoCode', null);
+    Vue.set(state, 'promoRate', 0);
+    Vue.set(state, 'minPromoCost', null);
+    Vue.set(state, 'isPromoApplied', false);
   }
 };
 
@@ -114,7 +138,16 @@ export const getters = {
   userInfo(state) {
     return state.userInfo;
   },
-  discount(state) {
-    return state.discount;
+  isPromoApplied(state) {
+    return state.isPromoApplied;
+  },
+  promoCode(state) {
+    return state.promoCode;
+  },
+  promoRate(state) {
+    return state.promoRate;
+  },
+  minPromoCost(state) {
+    return state.minPromoCost;
   }
 };

@@ -4,7 +4,9 @@
     <div class="prod-info">
       <div class="info-1">{{productInfo.name}}</div>
       <div class="info-2">{{productInfo.weight}}</div>
-      <div class="info-3">{{'Tk.' + productInfo.cost}}</div>
+      <div v-if="!isPromoApplied" class="info-3">{{'Tk.' + productInfo.cost}}</div>
+      <div v-else class="info-3">{{'Tk. ' + ((100 - promoRate)/100) * productInfo.cost}}
+        <strike>{{'Tk.' + productInfo.cost}}</strike></div>
     </div>
     <button class="add-to-cart-btn" v-if="!cartProductList[productInfo._id]" @click="addProductToCart(productInfo)">
       Add to bag
@@ -23,7 +25,7 @@
   export default {
     props: ['productInfo'],
     computed: {
-      ...mapGetters(['cartProductList'])
+      ...mapGetters(['cartProductList', 'isPromoApplied', 'promoRate'])
     },
     methods: {
       ...mapMutations(['addProductToCart', 'decreaseAmount'])
@@ -71,6 +73,7 @@
     .add-more-btn {
       display: flex;
       justify-content: space-around;
+
       span {
         button {
           width: 35px;

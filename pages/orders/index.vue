@@ -8,7 +8,8 @@
   export default {
     created() {
       this.$eventBus.$emit('foldAll');
-    }
+    },
+    middleware: ['auth']
   }
 </script>
 

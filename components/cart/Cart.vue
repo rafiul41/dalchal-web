@@ -33,7 +33,7 @@
             </div>
             <div v-if="promoCode && totalCost >= minPromoCost">Discount {{promoRate}}% Applied</div>
             <button @click="changeCode" v-if="promoCode">Change Code</button>
-            <div v-if="inputOpen">
+            <div v-if="!promoCode">
               <input v-model="promo" type="text">
               <button @click="getPromo">GO</button>
             </div>
@@ -56,8 +56,7 @@
     data() {
       return {
         codeOpen: false,
-        promo: null,
-        inputOpen: true
+        promo: null
       }
     },
     computed: {
@@ -66,7 +65,6 @@
     methods: {
       ...mapMutations(['removeItem', 'updatePromo', 'clearPromo']),
       changeCode() {
-        this.inputOpen = true;
         this.clearPromo();
       },
       getPromo() {
@@ -79,7 +77,6 @@
               if (response.data.statusCode !== 200 || !response.data.data) {
                 return Promise.reject(response.data.message);
               }
-              this.inputOpen = false;
               this.updatePromo(response.data.data);
             })
             .catch(err => {

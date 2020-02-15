@@ -62,6 +62,7 @@ export const mutations = {
   clearCart(state) {
     Vue.set(state, 'cartProducts', {});
     Vue.set(state, 'totalCost', 0);
+    Vue.set(state, 'isPromoApplied', false);
   },
   //user
   setUserInfo(state, user) {

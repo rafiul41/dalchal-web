@@ -5,7 +5,7 @@
       <label>Mobile Number</label><br>
       <input class="sign-in-input" type="text" v-model="mobileNumber" placeholder="Please enter your mobile number"><br>
       <label>Password</label><br>
-      <input class="sign-in-input" type="text" v-model="password" placeholder="Please enter your password"><br>
+      <input class="sign-in-input" type="password" v-model="password" placeholder="Please enter your password"><br>
       <button class="btn-lg">Sign In</button>
     </form>
   </div>

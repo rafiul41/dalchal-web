@@ -73,7 +73,7 @@
         };
 
         if (this.isPromoApplied) {
-          order.discount = totalCost * (this.promoRate / 100);
+          order.discount = this.totalCost * (this.promoRate / 100);
           order.totalCost = order.totalCost - order.discount;
         }
 
